@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import axios from 'axios';
+import AlbumDetail from './albumDetail';
 
 class AlbumList extends Component {
-    
     constructor(props) {
         super(props);
         this.state = { albums: [] };
@@ -18,11 +18,10 @@ class AlbumList extends Component {
 
     renderAlbums() {
         const { albums } = this.state;
-        console.log(albums.data);
         if (typeof albums.data !== "undefined") {
             return albums.data.map(album => 
-            <Text key={album.id}>{album.title}</Text>
-        );
+                <AlbumDetail record={album} />
+            );
         }
     }
 
