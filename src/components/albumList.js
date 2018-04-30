@@ -9,7 +9,7 @@ class AlbumList extends Component {
         this.state = { albums: [] };
     }
     componentDidMount() {
-        axios.get("http://reactapis.local/api/albums")
+        axios.get('http://reactapis.local/api/albums')
             .then(response => this.setState({ albums: response.data }))
             .catch(function (error) {
                 console.log(error);
@@ -18,9 +18,9 @@ class AlbumList extends Component {
 
     renderAlbums() {
         const { albums } = this.state;
-        if (typeof albums.data !== "undefined") {
+        if (typeof albums.data !== 'undefined') {
             return albums.data.map(album => 
-                <AlbumDetail record={album} />
+                <AlbumDetail key={album.id} record={album} />
             );
         }
     }
